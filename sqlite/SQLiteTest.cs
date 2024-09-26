@@ -2,27 +2,32 @@ using Godot;
 using SQLite;
 using System;
 using System.IO;
+using Yamanote;
 
 public partial class SQLiteTest : Node
 {
 	private SQLiteConnection _db;
 
+	private YamanoteDAO _dao = new YamanoteDAO();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		string databasePath = Path.Combine(ProjectSettings.GlobalizePath("res://sqlite"), "test.sqlite");
+		string databasePath = Path.Combine(ProjectSettings.GlobalizePath("res://sqlite"), "test1.sqlite");
 
 		_db = new SQLiteConnection(databasePath);
 		_db.CreateTable<Stock>();
 		_db.CreateTable<Valuation>();
 
 		GetStocks();
+
+		// _dao.GetCategories();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		// AddStock();
+		AddStock();
 	}
 
 	public void AddStock()
@@ -33,7 +38,8 @@ public partial class SQLiteTest : Node
 			Symbol = Guid.NewGuid().ToString().Substring(0, 4)
 		};
 
-		_db.Insert(stock);
+		var count = _db.Insert(stock);
+		Console.WriteLine($"{count} records added [Stock: {stock.Symbol}]");
 	}
 
 	public void GetStocks()

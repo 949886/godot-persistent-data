@@ -48,6 +48,18 @@ The .csproj file should look like this:
 ### 2. Add the SQLite.cs file to your project
 
 
+## Excel
+
+Excel is a common choice for game designers to create and manage game data, such as levels, items, and characters. Game developers should then convert the Excel data into a format that can be read by the game engine.
+
+### Excel to SQLite
+
+To convert Excel data into SQLite by following these steps:
+
+1. Export the Excel data to a CSV file by selecting `File > Save As` and choosing `CSV (Comma delimited) (*.csv)` as the file format.
+2. Use a tool to convert the CSV file into a SQLite database, such as [SQLiteStudio](https://sqlitestudio.pl/), [DB Browser for SQLite](https://sqlitebrowser.org/), or [SQLite Online](https://sqliteonline.com/), or some professional tools like [DataGrip](https://www.jetbrains.com/datagrip/features/importexport.html), [Navicat](https://www.navicat.com/).
+
+
 [NuGet Package Manager]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
 [NuGet Gallery]: https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery
 
